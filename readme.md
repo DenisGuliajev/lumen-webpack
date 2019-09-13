@@ -19,3 +19,42 @@ If you discover a security vulnerability within Lumen, please send an e-mail to 
 ## License
 
 The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+# Docker + Lumen with Nginx and MySQL
+
+
+
+## Create Lumen App
+
+App will be created vfrom project root files with public dir set to public/
+
+### Configuration
+
+To change configuration values, look in the `docker-compose.yml` file and change the `php` container's environment variables or other parameters. These directly correlate to the Lumen environment variables.
+
+## Docker Setup
+
+### [Docker for Mac](https://docs.docker.com/docker-for-mac/)
+
+### [Docker for Windows](https://docs.docker.com/docker-for-windows/)
+
+### [Docker for Linux](https://docs.docker.com/engine/installation/linux/)
+
+### Build & Run
+
+```bash
+docker-compose up --build -d
+```
+
+Navigate to [http://localhost:80](http://localhost:80) 
+
+### Stop Everything
+
+```bash
+docker-compose down
+```
+
+## Contribute
+
+Submit a Pull Request!
