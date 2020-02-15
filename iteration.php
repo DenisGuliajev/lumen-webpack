@@ -18,7 +18,6 @@ while ($item = array_pop($data)) {
         ];
     } else {
         $products[] = [
-            'id' => substr($item['id'], strrpos($item['id'], '/' )+1),
             'gid' => $item['id'],
             'title' => $item['title'],
             'options' => $item['options'],
@@ -30,13 +29,11 @@ while ($item = array_pop($data)) {
     }
 }
 // get id'ish records with indexes. Indexes will match the ones in parent array
-$indexedIdValues = array_column($products, 'id');
+$indexedIdValues = array_column($products, '__parentId');
 
 while ($variant = array_pop($allVariants)) {
-    // get proper id, this step can be nested
-    $parentTruId = substr($variant['__parentId'], strrpos($variant['__parentId'], '/' )+1);
     // find index of the parent element in products array
-    $indexInProduct = array_search($parentTruId, $indexedIdValues, true);
+    $indexInProduct = array_search($variant['__parentId'], $indexedIdValues, true);
     if ($indexInProduct === false) {
         // no sure if this needed, but it will hapen
         throw new Exception('Not parent product found for ' . json_encode($variant));
